@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Impressão</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>Sistema de Impressão</h1>
+
+<input type="text" id="nomeArquivo" placeholder="Nome do arquivo">
+<button onclick="adicionarNaFila()">Adicionar à Fila</button>
+<button onclick="imprimir()">Imprimir</button>
+
+<div id="estadoFila"></div>
+
+<script src="main.js"></script>
+<script>
+  function adicionarNaFila() {
+    const nomeArquivo = document.getElementById("nomeArquivo").value;
+    if (nomeArquivo.trim() !== "") {
+      filaDeImpressao.adicionarArquivo(nomeArquivo);
+      document.getElementById("nomeArquivo").value = "";
+    }
+  }
+
+  function imprimir() {
+    const arquivoImpresso = filaDeImpressao.imprimir();
+    if (arquivoImpresso !== null) {
+      alert(`Arquivo impresso: ${arquivoImpresso}`);
+    } else {
+      alert("A fila de impressão está vazia.");
+    }
+  }
+
+  // Inicializa o estado da fila na página
+  atualizarEstadoFila();
+</script>
+
+</body>
+</html>
